@@ -3,7 +3,7 @@
 @section('content')
 
 
-{{ Form::open(array('url' => '', 'role'=>'form')) }}
+{{ Form::open(array('role'=>'form')) }}
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">

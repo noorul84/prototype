@@ -69,4 +69,18 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+
+    public function logout()
+    {
+        auth()->guard($this->getGuard())->logout();
+
+        // destroy all sessions
+        session()->flush();
+        
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+    }
+
+
+    
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class LeaveRepAttachmentUpdate extends Request
+class CreateProject extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class LeaveRepAttachmentUpdate extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class LeaveRepAttachmentUpdate extends Request
     public function rules()
     {
         return [
-            //
+            'project' => 'required',
         ];
     }
+
+
+
+
+    public function messages()
+    {
+        return [
+            'project.required' => 'Please insert Project Name.',
+        ];
+    } 
+
 }
