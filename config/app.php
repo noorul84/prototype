@@ -158,6 +158,7 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -208,7 +209,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Input' => Illuminate\Support\Facades\Input::class,        
+        'Input' => Illuminate\Support\Facades\Input::class,    
+        'PDF' => Barryvdh\DomPDF\Facade::class,    
 
     ],
 

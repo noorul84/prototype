@@ -10,18 +10,20 @@
       <div class="col-md-10 col-md-offset-1">
          <div class="panel panel-default">
             <div class="panel-heading">Dashboard</div>
-
             <div class="panel-body">
 
+               @if(Session::has('message'))
+               <div class="alert alert-{{ Session::get('label') }} alert-dismissable" id="flashMessage">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  {{ Session::get('message') }}
+               </div>
+               @endif
 
                <legend>New Survey</legend>
                <div class="row">
                   <div class="col-md-12">
                      <div class="well">
                         {{ Form::open(array('class' => 'form-horizontal', 'id' => 'form-search')) }}  
-
-
-
 
                         <div class="row">
                            <div class="col-md-6">
@@ -34,8 +36,6 @@
                               {{ Form::button('Create', array('class' => 'btn btn-primary', 'type' => 'submit', 'name' => 'btn-search')) }}
                            </div>
                         </div>
-
-
 
                         {{ Form::close() }}
                      </div>
@@ -56,15 +56,20 @@
                                  <th class="text-right">Actions</th>                                                      
                               </tr>
                            </thead>
-                           <tr>
-                              <td>1</td>
-                              <td>Survey 1</td>
-                              <td>2016-10-11</td>
-                              <td class="text-right"><a href="" alt="" class="btn btn-primary btn-sm" title="View"><i class="icon-magnifier"></i></a></td>
-                           </tr>
-                           <tr>
-                              <td colspan="4">No record</td>
-                           </tr>
+                           @if (count($history))
+                              <?php $no = 0; ?>
+                              @foreach ($history as $i)
+                                 <?php $no++; ?>
+                                 <tr>
+                                    <td>{{ $no }}</td>
+                                    <td>{{ $i->name }}</td>
+                                    <td>{{ $i->date_apply }}</td>
+                                    <td class="text-right"><a href="{{ route('view', array($i->id)) }}" alt="" class="btn btn-primary btn-sm" title="View"><i class="icon-magnifier"></i></a></td>
+                                 </tr>
+                              @endforeach
+                           @else
+                              <tr><td colspan="4">No record.</td></tr>
+                           @endif
                         </table>
                      </div>    
 

@@ -31,6 +31,10 @@ Route::post('/home', [
     'uses' => 'HomeController@postDashboard'
 ]); 
 
+Route::get('/view/{id}', [
+    'as' => 'view', 
+    'uses' => 'HomeController@getView'
+]); 
 
 Route::get('/p1', [
     'as' => 'p1', 
@@ -81,6 +85,12 @@ Route::post('/p5', [
     'uses' => 'HomeController@postPage5'
 ]);
 
+Route::post('/download/pdf', [
+    'uses' => 'HomeController@postPdf'
+]);
 
-
+// Route::get('/download/pdf', [
+//     'as' => 'pdf', 
+//     'uses' => 'HomeController@getPdf'
+// ]);
 

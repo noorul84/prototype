@@ -15,6 +15,9 @@
 
 					<table class="table">
 						<tr>
+							<td colspan="3"><strong>Project Name: </strong>{{ session()->get('project') }}</td>
+						</tr>
+						<tr>
 							<td><div><strong>Attributes</strong></div></td>
 							<td><div><strong>Mean</strong></div></td>
 							<td><strong>Status</strong></td>
@@ -165,14 +168,11 @@
 							<td><div><strong>{{ \App\Survey::LabelName($dx) }}</strong></div></td>
 						</tr>
 					</table>
-
-
-
 				</div>
 
 
 				<div class="panel-footer">
-					{{ Form::button('Save&nbsp;<i class="icon-arrow-right"></i>',['type' => 'button', 'class' => 'btn btn-primary'])  }}
+					{{ Form::button('Save&nbsp;<i class="icon-arrow-right"></i>',['type' => 'submit', 'class' => 'btn btn-primary', 'id' => 'btn_save'])  }}
 				</div>   
 
 
@@ -180,5 +180,51 @@
 		</div>
 	</div>
 </div>
+
+
+{{ Form::hidden('project', session()->get('project')) }}
+{{ Form::hidden('a1', round($a1, 2)) }}
+{{ Form::hidden('a2', round($a2, 2)) }}
+{{ Form::hidden('a3', round($a3, 2)) }}
+{{ Form::hidden('a4', round($a4, 2)) }}
+{{ Form::hidden('a5', round($a5, 2)) }}
+{{ Form::hidden('ax', round($ax, 2)) }}
+{{ Form::hidden('b1', round($b1, 2)) }}
+{{ Form::hidden('bx', round($bx, 2)) }}
+{{ Form::hidden('c1', round($c1, 2)) }}
+{{ Form::hidden('c2', round($c2, 2)) }}
+{{ Form::hidden('c3', round($c3, 2)) }}
+{{ Form::hidden('cx', round($cx, 2)) }}
+{{ Form::hidden('d1', round($d1, 2)) }}
+{{ Form::hidden('d2', round($d2, 2)) }}
+{{ Form::hidden('d3', round($d3, 2)) }}
+{{ Form::hidden('d4', round($d4, 2)) }}
+{{ Form::hidden('d5', round($d5, 2)) }}
+{{ Form::hidden('d6', round($d6, 2)) }}
+{{ Form::hidden('d7', round($d7, 2)) }}
+{{ Form::hidden('d8', round($d8, 2)) }}
+{{ Form::hidden('d9', round($d9, 2)) }}
+{{ Form::hidden('dx', round($dx, 2)) }}
+{{ Form::close() }}
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(document).on('click','#btn_save',function() {
+		var answer = confirm('Do you want to save this record?');
+		if (answer == true) {
+			return true;
+		}
+		else {
+			return false;
+		} 
+	});
+});
+</script>
+
+
 
 @endsection
