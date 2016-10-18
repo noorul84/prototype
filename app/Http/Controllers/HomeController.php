@@ -27,7 +27,7 @@ class HomeController extends Controller
 
     public function showDashboard()
     {
-        $history = \App\Survey::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+        $history = \App\Survey::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->paginate(10);
         return view('home', compact('history'));
     }
 
@@ -173,6 +173,21 @@ class HomeController extends Controller
         $pdf->loadHTML('<h1>Test</h1>');
         return $pdf->stream();        
         // return 1;
+    }
+
+    public function getPdf($id)
+    {
+        $detail = \App\Survey::where('id', $id)->where('user_id', auth()->user()->id)->firstOrFail();
+
+        // $data = DailyReports::all();
+        $pdf = \PDF::loadView('view', array('detail' => $detail));
+        return $pdf->download('report.pdf');
+
+
+        // $html = \View::make('view')->withClient($detail);
+        // $pdf = App::make('dompdf');
+        // $pdf->loadHTML($html);
+        // return $pdf->stream();             
     }
 
 }

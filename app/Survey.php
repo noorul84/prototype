@@ -34,6 +34,11 @@ class Survey extends Model
 	}
 
 
+	public function UserInfo() {
+		return $this->belongsTo('App\User', 'user_id');
+	}
+
+
 
 	public function save_survey($data)
 	{

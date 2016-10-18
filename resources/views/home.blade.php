@@ -9,7 +9,7 @@
    <div class="row">
       <div class="col-md-10 col-md-offset-1">
          <div class="panel panel-default">
-            <div class="panel-heading">Dashboard</div>
+            <div class="panel-heading">Home</div>
             <div class="panel-body">
 
                @if(Session::has('message'))
@@ -56,10 +56,12 @@
                                  <th class="text-right">Actions</th>                                                      
                               </tr>
                            </thead>
-                           @if (count($history))
-                              <?php $no = 0; ?>
+                           @if (count($history) > 0)
+                              <?php $no = $history->firstItem() - 1;?>
                               @foreach ($history as $i)
-                                 <?php $no++; ?>
+                                 <?php 
+                                    $no++;                       
+                                 ?>
                                  <tr>
                                     <td>{{ $no }}</td>
                                     <td>{{ $i->name }}</td>
@@ -71,6 +73,12 @@
                               <tr><td colspan="4">No record.</td></tr>
                            @endif
                         </table>
+
+                        <div class="paging text-center">  
+                           {{ $history->render() }}      
+                           <br>
+                           <p>{{ 'Total: '.$history->total() }}</p>
+                        </div>                        
                      </div>    
 
                   </div>

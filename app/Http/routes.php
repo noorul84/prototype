@@ -23,6 +23,20 @@ Route::get('/', 'Auth\AuthController@showLoginForm');
 Route::auth();
 
 
+Route::get('/user/index', [
+    'as' => 'user.index', 
+    'uses' => 'UserController@showIndex'
+]);
+Route::post('/user/index', [
+    'uses' => 'UserController@postIndex'
+]);
+Route::get('/user/result/{id}', [
+    'as' => 'user.result', 
+    'uses' => 'UserController@showResult'
+]);
+
+
+
 Route::get('/home', [
     'as' => 'home', 
     'uses' => 'HomeController@showDashboard'
@@ -89,8 +103,8 @@ Route::post('/download/pdf', [
     'uses' => 'HomeController@postPdf'
 ]);
 
-// Route::get('/download/pdf', [
-//     'as' => 'pdf', 
-//     'uses' => 'HomeController@getPdf'
-// ]);
+Route::get('/download/pdf/{id}', [
+    'as' => 'pdf', 
+    'uses' => 'HomeController@getPdf'
+]);
 
