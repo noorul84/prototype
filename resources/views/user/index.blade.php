@@ -64,10 +64,7 @@
                                     <td>{{ $i->email }}</td>
                                     <td>{{ \App\Survey::where('user_id', $i->id)->count() }}</td>
                                     <td class="text-right">
-                                       <a href="{{ route('user.result', array($i->id)) }}" class="btn btn-primary btn-sm" title="View Result"><i class="icon-pie-chart"></i></a>
-                                       @if ($i->id != auth()->user()->id)
-                                          &nbsp;{{ Form::button('<i class="icon-close"></i>',['type' => 'submit', 'class' => 'btn btn-primary btn-sm', 'title' => 'Delete', 'id' => 'btn_id', 'alt' => $i->id]) }}
-                                       @endif
+                                       <a href="{{ route('user.result', array($i->id)) }}" class="btn btn-primary btn-sm" title="View Result"><i class="icon-pie-chart"></i></a>&nbsp;{{ Form::button('<i class="icon-close"></i>',['type' => 'submit', 'class' => 'btn btn-primary btn-sm', 'title' => 'Delete', 'id' => 'btn_id', 'alt' => $i->id]) }}
                                     </td>
                                  </tr>
                               @endforeach

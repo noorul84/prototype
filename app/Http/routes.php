@@ -23,6 +23,9 @@ Route::get('/', 'Auth\AuthController@showLoginForm');
 Route::auth();
 
 
+
+
+// user management
 Route::get('/user/index', [
     'as' => 'user.index', 
     'uses' => 'UserController@showIndex'
@@ -34,6 +37,9 @@ Route::get('/user/result/{id}', [
     'as' => 'user.result', 
     'uses' => 'UserController@showResult'
 ]);
+
+
+
 
 
 

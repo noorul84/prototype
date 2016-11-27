@@ -17,7 +17,7 @@ class UserController extends Controller
 	public function showIndex()
 	{
 		$data = array();
-		$data['users'] = \App\User::orderBy('id', 'desc')->paginate(10);
+		$data['users'] = \App\User::where('id', '!=', 1)->orderBy('id', 'desc')->paginate(10);
 		return view('user.index', $data);
 	}
 
@@ -33,7 +33,7 @@ class UserController extends Controller
 	public function showResult($id)
 	{
 		$data = array();
-		$data['history'] = \App\Survey::where('user_id', $id)->orderBy('id', 'desc')->get();
+		$data['details'] = \App\Survey::where('user_id', $id)->orderBy('id', 'desc')->get();
 		return view('user.result', $data);
 	}
 
