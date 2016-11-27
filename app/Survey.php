@@ -12,19 +12,19 @@ class Survey extends Model
 
 	public static function LabelName($x)
 	{
-		if ($x < 2) {
+		if ($x <= 1) {
 			$z = 'Strongly Dissatisfied';
 		}
-		else if ($x < 3) {
+		else if ($x <= 2) {
 			$z = 'Dissatisfied';
 		}
-		else if ($x < 4) {
+		else if ($x <= 3) {
 			$z = 'Normal';
 		}
-		else if ($x < 5) {
+		else if ($x <= 4) {
 			$z = 'Satisfied';
 		}
-		else if ($x < 6) {
+		else if ($x <= 5) {
 			$z = 'Strongly Satisfied';
 		}
 		else {
