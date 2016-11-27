@@ -37,4 +37,12 @@ class User extends Authenticatable
     }
 
 
+    public function user_delete($id)
+    {
+        $this->delete();
+        $s =  \App\Survey::where('user_id', $id)->delete();
+        $msg = array('User successfully deleted.', 'success', 'user.index');    
+        return $msg;            
+    }
+
 }

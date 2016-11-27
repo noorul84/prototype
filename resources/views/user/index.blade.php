@@ -13,6 +13,13 @@
             <div class="panel-body">
 
 
+               @if(Session::has('message'))
+               <div class="alert alert-{{ Session::get('label') }} alert-dismissable" id="flashMessage">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  {{ Session::get('message') }}
+               </div>
+               @endif
+
                <div class="row">
                   <div class="col-md-12">
                      <div class="well">
@@ -104,7 +111,7 @@ $(document).ready(function(){
    $(document).on('click','#btn_id',function() {
       var answer = confirm('Do you want to delete this record?');
       if (answer == true) {
-         $('id').val($(this).attr('alt'));
+         $('#id').val($(this).attr('alt'));
       }
       else {
          return false;

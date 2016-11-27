@@ -25,7 +25,15 @@ class UserController extends Controller
 	public function postIndex(Request $request)
 	{
 		$data = array();
-		$data['users'] = \App\User::orderBy('id', 'desc')->paginate(10);
+		if (!empty($request->id)) {
+	        $i = \App\User::find($request->id);
+	        $save = $i->user_delete($request->id);
+	        return redirect()->route($save[2])->with([
+	            'message' => $save[0], 
+	            'label' => 'alert alert-'.$save[1].' alert-dismissible'
+	        ]); 		        	
+		}		
+		$data['users'] = \App\User::where('id', '!=', 1)->orderBy('id', 'desc')->paginate(10);		
 		return view('user.index', $data);
 	}
 
