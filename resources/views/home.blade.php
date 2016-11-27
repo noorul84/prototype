@@ -19,6 +19,8 @@
                </div>
                @endif
 
+
+               @if (auth()->user()->id != 1)
                <legend>New Survey</legend>
                <div class="row">
                   <div class="col-md-12">
@@ -83,6 +85,9 @@
 
                   </div>
                </div>
+               @else
+                  {{ 'Welcome admin!' }}
+               @endif
 
 
             </div>
